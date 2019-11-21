@@ -23,7 +23,7 @@ function addTodo(req, res, next) {
 function updateTodo(req, res, next) {
     Todo.findOneAndUpdate({_id: req.body._id}, {
         content: req.body.content,
-        complete: req.body.complete
+        complete: req.body.complete? req.body.complete : false
     }, {new: true}, (err, todo) => {
         if (err)
             res.status(400).send(err);
@@ -37,7 +37,7 @@ function delTodo(req, res, next) {
             res.status(400).send(err);
         res.status(200).send(
             {
-                msg: "Success"
+                massage: "Success"
             }
         )
     })

@@ -9,8 +9,12 @@ app.use(bodyParser.json());
 
 let todoRoute = require('./routes/route');
 
-app.use('/',todoRoute);
-
+app.use('/users',todoRoute);
+app.get('/',(req, res, next) => {
+    res.status(200).send({
+        status: "OK"
+    })
+})
 
 
 
